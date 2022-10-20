@@ -1,0 +1,500 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  /* Цвет наследуемый как у родителя и убрали подчеркивание */
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #232222;
+}
+
+.container {
+  max-width: 1220px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.header__top {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 27px;
+}
+
+.logo {
+  margin-left: 16px;
+}
+/* Почему марджины а не падинг? Место в 16 пиксилей при клики на него будет открываться ссылка,так не пойдет и лучше задать марджин и тогда именно при клике на картинку произойдет взаимодействие это удобней */
+
+.phone {
+  margin-top: 11px;
+  /* почему 11 если отступ 38? 27 мы уже задали всем в хейдер топ */
+  margin-right: 43px;
+}
+
+.menu {
+  margin-top: 16px;
+}
+/* почему 16 если отступ 43? 27 мы уже задали всем в хейдер топ */
+
+.menu__list {
+  display: flex;
+}
+
+.menu__item + .menu__item {
+  margin-left: 30px;
+}
+
+.menu__link {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: #001e64;
+}
+
+.menu__link:hover {
+  border-bottom: 1px solid #001e64;
+}
+/* При наведение на ссылку появляется нижнее подчеркивание  */
+
+.header__content {
+  background-image: url(../images/header-bg.png);
+  /* добавили картинку  */
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  padding-bottom: 20px;
+  margin-top: -100px;
+  min-height: calc(100vh - 57px);
+}
+
+.title {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 95px;
+  color: #001e64;
+  max-width: 589px;
+  /* ширина тайтла */
+  padding-top: 170px;
+  padding-left: 112px;
+  margin-bottom: 60px;
+}
+
+.header-slider {
+  max-width: 522px;
+  /* ширина текста в слайдере 410 + 122 зарезервированное место под шкалу цифр */
+  padding-left: 112px;
+  padding-top: 57px;
+  /* расстояние от текста слайдера до верхней части шкалы цифр */
+  padding-bottom: 135px;
+  /* расстояние от теста слайдера до нижней части шкалы цифр с учетом маленького отступа в центре теста */
+}
+
+.header-slider__text {
+  margin-bottom: 25px;
+  /* Отстпу снизу до текста */
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+}
+
+.slick-prev,
+.slick-next {
+  background-color: transparent;
+  /* убирает у стрелочек белый фон заданный браузером по умолчанию и это баттоны  */
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  /* теперь я могу управлять их рассположением */
+  left: 40px;
+}
+
+.slick-prev {
+  top: 0;
+}
+
+.slick-next {
+  bottom: 0;
+}
+/* Расставили стрелочки по их местам */
+
+.slick-dots {
+  list-style: none;
+  /* Убрали у списка маркеры */
+  position: absolute;
+  left: 35px;
+  /* указали его рассположение слева от границ контейнера */
+  top: 58px;
+  /* сами смотрим и крутим расположение чтобы встало рядом с началом текста */
+  bottom: 55px;
+  /* Сам элемент  имеет высоту 10 и его расположение вниз 45 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.slick-dots button {
+  border: none;
+  background-color: transparent;
+  /* устанавливает прозрачный фон */
+  padding: 0;
+  font-size: 24px;
+  line-height: 28px;
+  color: #ffffff;
+  opacity: 0.5;
+  cursor: pointer;
+}
+/* Обратились ко всем цифрам и задали им стилистику и опасити */
+
+.slick-active button {
+  opacity: 1;
+}
+/* Если цифра активна то добавляем ей опасити(прозрачность) 1 т.е полная прозрачность */
+
+.slick-dots button::before {
+  content: '0';
+}
+/* задали то, что перед всеми баттонами должен стоять 0 */
+
+.slick-dots li:nth-child(n + 10) button::before {
+  content: '';
+}
+/* Здесь мы указали формулу. Чтобы не было такого,что после 10 лишки шел ноль перед,мы задали что после десятой лишки ноль не указывается */
+
+.header__content-btn {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #ffffff;
+  padding: 14px 88px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-left: 112px;
+  display: inline-block;
+  transform: translateY(-100px);
+  position: absolute;
+  transition: all 0.3;
+}
+
+.header__content-btn:hover {
+  color: #001e64;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.header__content-box {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
+  font-size: 18px;
+  line-height: 21px;
+  color: #ffffff;
+}
+
+.header__content-link--active {
+  font-weight: 700;
+}
+
+.product {
+  padding-top: 100px;
+  /* отступ от стрелочки вверх */
+}
+
+.product__inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product__name {
+  width: 510px;
+  text-align: center;
+  padding-top: 41px;
+}
+
+.product__name-item {
+  font-family: 'Roboto Slab', serif;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.product__name-item.slick-current {
+  font-weight: 700;
+  font-size: 36px;
+  color: #001e64;
+}
+
+.product__name-item + .product__name-item {
+  margin-top: 30px;
+}
+
+.product-prev {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.product-prev,
+.product-next {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.product__content {
+  width: 600px;
+  /* ширина контента измеряяется по ширине текста */
+}
+
+.product__content-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product__content-img {
+  object-fit: cover;
+}
+
+.product__content-list {
+  width: 291px;
+  list-style: none;
+}
+
+.product__content-item {
+  margin-bottom: 30px;
+}
+
+.product__content-item span {
+  display: block;
+  margin-bottom: 10px;
+  color: #001e64;
+}
+
+.product__content-title {
+  font-family: 'Roboto Slab', serif;
+  padding-top: 20px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #001e64;
+  margin-bottom: 20px;
+}
+
+.product__content-text {
+  margin-bottom: 25px;
+}
+
+.product__content-btn {
+  display: inline-block;
+  color: #001e64;
+  font-family: 'Roboto Slab', serif;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  padding: 12px 85px;
+  background-color: transparent;
+  text-transform: uppercase;
+  border: 1px solid #001e64;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3;
+}
+
+.product__content-btn:hover {
+  color: #fff;
+  background-color: #001e64;
+}
+
+.seefood-box {
+  background-image: url(../images/seefood-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  padding: 295px 0 95px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+}
+
+.seefood-box__items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.seefood-box__item {
+  width: 180px;
+  min-height: 165px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url(../images/seafood-decor.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.seafood {
+  padding: 100px 0;
+}
+
+.seafood__items {
+  margin-bottom: 100px;
+}
+.seafood__item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.seafood__item-title {
+  max-width: 491px;
+  margin-bottom: 30px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #001e64;
+}
+.seafood__item-text {
+  max-width: 420px;
+  margin-bottom: 20px;
+}
+
+.seafood__item--text-right .seafood__item-title {
+  max-width: 420px;
+}
+
+.seafood__item--text-right .seafood__item-content {
+  margin-right: 180px;
+}
+
+.seafood-blockquote {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.seafood-blockquote-text {
+  max-width: 696px;
+  margin: 0 auto;
+  font-size: 18px;
+  margin: 0 auto;
+}
+
+.contacts {
+  background-image: url(../images/contacts-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+}
+
+.contacts__box {
+  margin-left: auto;
+  width: 390px;
+  background-color: #fff;
+  padding: 33px 0 33px 20px;
+}
+.contacts__box-text {
+  width: 195px;
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: #001e64;
+  margin-bottom: 30px;
+}
+.contacts__box-list {
+  list-style: none;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.contacts__box-item {
+  margin-top: 30px;
+}
+
+.contacts__box-item span {
+  display: block;
+}
+
+.footer {
+  padding: 25px 0 110px;
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 45px 0 23px;
+}
+.footer__inner .menu {
+  padding-bottom: 30px;
+}
+
+.footer-social__list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.footer-social__item + .footer-social__item {
+  margin-left: 10px;
+}
+
+.footer-social__link:hover path {
+  transition: all 0.3;
+}
+
+.footer-social__link:hover path {
+  fill: #001e64;
+}
+
+.menu__btn {
+  width: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 13px 0;
+  position: relative;
+  display: none;
+  z-index: 10;
+}
+
+.menu__btn::after,
+.menu__btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #001e64;
+}
+
+.menu__btn::before {
+  top: 0;
+}
+
+.menu__btn::after {
+  bottom: 0;
+}
+
+.menu__btn span {
+  display: block;
+  height: 4px;
+  background-color: #001e64;
+}
+/* бургер */
